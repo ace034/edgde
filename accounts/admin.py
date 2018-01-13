@@ -9,11 +9,13 @@ from accounts.models import Account, Settings
 class AccountChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         model = Account
+        fields = ('first_name', 'last_name', 'username', 'email', 'birthday')
 
 
 class AccountCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Account
+        fields = ('username', 'email', 'birthday', 'password', 'password1')
 
 
 class AccountAdmin(UserAdmin):
