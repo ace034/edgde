@@ -8,6 +8,7 @@ COLOR_CHOICES = (
     ('Red', 'red'),
     ('Blue', 'blue'),
     ('Green', 'green'),
+    ('Pink', 'pink'),
     ('Gray', 'gray'),
     ('Black', 'black'),
     ('Orange', 'orange'),
@@ -16,8 +17,11 @@ COLOR_CHOICES = (
 class Settings(models.Model):
     color = models.CharField(max_length=16, choices=COLOR_CHOICES, default='red')
 
+    class Meta:
+        verbose_name_plural = 'Settings'
+
 class Account(AbstractUser):
-    birthday = models.DateTimeField()
+    birthday = models.DateTimeField(null=True, blank=True)
     points = models.PositiveIntegerField(default=500)
 
     settings = models.OneToOneField('accounts.Settings', on_delete=models.CASCADE)
