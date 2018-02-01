@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect
-from django.views import View
-from django.utils.decorators import method_decorator
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, authenticate
+from django.shortcuts import redirect, render
+from django.utils.decorators import method_decorator
+from django.views import View
 
 from .admin import AccountCreationForm
 from .forms import EditProfileForm
+
 
 class RegistrationView(View):
     template_name = 'registration/register.html'
@@ -41,14 +42,12 @@ class EditProfileView(View):
         return render(request, self.template_name, {'form': form})
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST, instance=request.user)
+        form = self.form_class(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
 
             return redirect('accounts:profile')
-
         return render(request, self.template_name, {'form': form})
-
 
 
 @method_decorator(login_required, name='dispatch')

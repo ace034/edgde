@@ -2,11 +2,11 @@
 {% block title %} Edit Profile{% endblock %}
 {% block content %}
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   {{form.as_p}}
-  <a class="btn btn-primary" href="{% url 'accounts:profile' %}">Update</a>
-    <a href="{% url 'accounts:password_change' %}" class="btn btn-primary">Change password</a>
+  <button class="btn btn-primary">Update</button>
+  <a href="{% url 'accounts:password_change' %}" class="btn btn-primary">Change password</a>
 </form>
 
 {% endblock %}

@@ -1,15 +1,25 @@
 {% extends 'layout2.html' %}
-{% block title %}  BOARD for {{ board.title }} {% endblock %}
+
+{% block title %} {{ model.title }} {% endblock %}
+
 {% block content %}
-{{ board.image }}
-<img src="{{ model.image.url }}" alt="">
-<form method="POST">
+<img src="{{ model.image }}" alt="{{ model.title }} image">
+
+<div id="posts">
+  {% for post in model.posts.all %}
+    <div class="post">
+      <div class="title">{{ post.title }}</div>
+      <div class="body">{{ post.body }}</div>
+      <div class="user">{{ post.account.username }}</div>
+    </div>
+  {% empty %}
+    No posts.
+  {% endfor %}
+</div>
+
+<form method="POST" action="{% url 'boards:add-comment' model.pk %}">
   {% csrf_token %}
   {{ form.as_p }}
-  <div>
-   <label for="uname">Comment: </label>
-   <input type="text" id="replies" name="replies">
- </div>
  <div>
    <button>Submit</button>
  </div>
