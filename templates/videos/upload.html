@@ -1,0 +1,10 @@
+{% extends 'layout2.html' %}
+{% load cloudinary %}
+{% block title %}Upload{% endblock %}
+
+{% block content %}
+
+  <form method="POST" action="{% url 'videos:complete' %}" enctype="multipart/form-data">
+    {{ direct.as_p }}
+  </form>
+{% endblock %}

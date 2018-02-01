@@ -1,0 +1,46 @@
+{% extends 'layout2.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h1>Homepage</h1>
+<section class="row text-center placeholders">
+  <div class="col-6 col-sm-3 placeholder">
+    <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+    <h4>Channel Marvel</h4>
+    <div class="text-muted">Suggestion</div>
+  </div>
+  <div class="col-6 col-sm-3 placeholder">
+    <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+    <h4>Channel Nature</h4>
+    <span class="text-muted">Suggestion</span>
+  </div>
+
+</section>
+
+<h2>Boards</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Popularity</th>
+        <th>Name</th>
+        <th>Posts</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for board in user.boards.all %}
+    <tr>
+      <td>{{ board.members.all.count }}</td>
+      <td><a href="{% url 'boards:detail' board.pk %}">{{ board.title }}</a></td>
+      <td>{{ board.posts.all.count }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td>
+        <h5>No Boards</h5>
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

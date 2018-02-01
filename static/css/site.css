@@ -74,3 +74,33 @@ hr.style1 {
   background: #FF002C;
   background-image: linear-gradient(to right, #111, #FF002C, #111);
 }
+.navbar{
+  background-color:#FF002C;
+  overflow:hidden;
+  height:64px;
+}
+
+.navbar a{
+  float:left;
+  display:block;
+  color:#f2f2f2;
+  margin-top: 0;
+  text-align:center;
+  opacity:0.7;
+  padding:14px 14px 22px 45px;
+  text-decoration:none;
+
+}
+
+.navbar ul{
+  margin:8px 0 0 0;
+  list-style:none;
+
+}
+
+.navbar a:hover{
+  background-color:#;
+  color:#000;
+  overflow-x:hidden;
+  opacity:0.9;
+}

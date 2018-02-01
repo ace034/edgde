@@ -8,16 +8,16 @@ class Channel(models.Model):
     description = models.CharField(max_length=1024)
 
     owner = models.ForeignKey('accounts.Account', on_delete=models.CASCADE)
-    editors = models.ManyToManyField('accounts.Account', related_name='editable_channels')
-    moderators = models.ManyToManyField('accounts.Account', related_name='moderated_channels')
+    editors = models.ManyToManyField('accounts.Account', related_name='editable_channels', blank=True)
+    moderators = models.ManyToManyField('accounts.Account', related_name='moderated_channels', blank=True)
 
 
 VIDEO_RATINGS = (
-    ('General', 'G'),
-    ('Parental Guidance', 'PG'),
-    ('Parents Strongly Cautioned', 'PG-13'),
-    ('Restricted', 'R'),
-    ('Adults Only', 'NC-17'),
+    ('G', 'General'),
+    ('PG', 'Parental Guidance'),
+    ('PG-13', 'Parents Strongly Cautioned'),
+    ('R', 'Restricted'),
+    ('NC-17', 'Adults Only'),
 )
 
 class Video(UUIDModel):

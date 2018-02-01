@@ -1,0 +1,141 @@
+{% load cloudinary %}
+{% cloudinary_includes %}
+{% cloudinary_js_config %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/static/imgs/first-favicon.gif">
+
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/colortemplates/BLK_393431.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://v4-alpha.getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">EDGDE &#8482;</a>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"></a>
+
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          {% if user.is_authenticated %}
+
+          <a href="{% url 'accounts:logout' %}" type="button" class="btn btn-secondary">Logout</a>
+          {% else %}
+          <a href="{% url 'accounts:login' %}" type="button" class="btn btn-secondary">Login</a>
+          <a href="{% url 'accounts:register' %}" type="button" class="btn btn-secondary">Sign Up</a>
+          {% endif %}
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'accounts:profile' %}">Homepage<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Channels</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'boards:index' %}">Boards</a>
+            </li>
+          </ul>
+
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Account Settings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Homepage Settings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Alerts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Uploads</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Medals</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="#">  Profile for {{ user.username }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Points: {{ user.points }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'accounts:profile-edit' %}">PICTURE: <br><img width="150px" src="/media/{{ request.user.image }}">
+              <h6>(edit)</h6></a>
+
+            </li>
+          </ul>
+
+
+        </nav>
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+          <div id="content">
+            {% block content %}{% endblock %}
+          </div>
+
+          <!-- last viewable item is here -->
+          <div class="footer"><h5><p>Copyright &copy; 2017 Edgde Inc </p></h5></div>
+        </main>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src='static/js/site.js'></script>
+
+    </script>
+    <!-- <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+    {% load cloudinary %}
+    {% cloudinary_includes %}
+    {% cloudinary_js_config %}
+    <script>
+    $(function() {
+      if($.fn.cloudinary_fileupload !== undefined) {
+        $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+      } else {
+        console.log('TEEEESSSTTT')
+      }
+    });
+    </script>
+  </body>
+</html>

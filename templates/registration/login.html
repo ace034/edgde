@@ -1,16 +1,19 @@
-{% extends 'layout.html' %}
+{% extends 'layout2.html' %}
 
 {% block title %}Login{% endblock %}
+
+{{ title }}
 
 {% block content %}
 <form method="POST">
   {% csrf_token %}
   {{ form.as_p }}
-  <button>Login</button>
+  <button class="btn btn-primary">Login</button>
 </form>
 
+
 <div>
-<button>Signup</button>
+  <a href="{% url 'accounts:password_reset' %}" type="button" class="btn btn-outline-secondary">Forgot password</a>
 <!-- <button><a href="{% url 'accounts:password_reset' %}">Forgot Password</a></button> -->
 </div>
 

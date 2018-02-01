@@ -1,0 +1,12 @@
+{% extends 'layout2.html' %}
+{% block title %} Edit Profile{% endblock %}
+{% block content %}
+
+<form method="POST">
+  {% csrf_token %}
+  {{form.as_p}}
+  <a class="btn btn-primary" href="{% url 'accounts:profile' %}">Update</a>
+    <a href="{% url 'accounts:password_change' %}" class="btn btn-primary">Change password</a>
+</form>
+
+{% endblock %}

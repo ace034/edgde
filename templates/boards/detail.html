@@ -1,0 +1,17 @@
+{% extends 'layout2.html' %}
+{% block title %}  BOARD for {{ board.title }} {% endblock %}
+{% block content %}
+{{ board.image }}
+<img src="{{ model.image.url }}" alt="">
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <div>
+   <label for="uname">Comment: </label>
+   <input type="text" id="replies" name="replies">
+ </div>
+ <div>
+   <button>Submit</button>
+ </div>
+</form>
+{% endblock %}

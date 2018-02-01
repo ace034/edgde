@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'cloudinary',
+    'core',
     'accounts',
     'videos',
     'boards',
@@ -124,9 +126,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media' )
 
 # Custom Authentication
 AUTH_USER_MODEL = 'accounts.Account'
+
+import cloudinary
+cloudinary.config(
+  cloud_name = "edgde",
+  api_key = "895398583512963",
+  api_secret = "PbY1dPBiPlYV1e0X0zumHLjhF1Y"
+)

@@ -1,0 +1,21 @@
+{% extends 'layout2.html' %}
+
+{% block title %}Photo Upload{% endblock %}
+
+{{ title }}
+
+{% block content %}
+<form action="{% url "photo_album.views.direct_upload_complete" %}" method="post">
+{% csrf_token %}
+{{ direct_form }}
+{# altenatively, use: {% cloudinary_direct_upload_field "image", request=request %} #}
+<input type="submit" value="Submit" />
+</form>
+
+
+<div>
+  <a href="{% url 'accounts:password_change' %}" type="button" class="btn btn-outline-secondary">Change password</a>
+<!-- <button><a href="{% url 'accounts:password_reset' %}">Forgot Password</a></button> -->
+</div>
+
+{% endblock %}

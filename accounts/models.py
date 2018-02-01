@@ -4,14 +4,14 @@ from django.dispatch import receiver
 from django.contrib.auth.models import AbstractUser
 
 COLOR_CHOICES = (
-    ('Yellow', 'yellow'),
-    ('Red', 'red'),
-    ('Blue', 'blue'),
-    ('Green', 'green'),
-    ('Pink', 'pink'),
-    ('Gray', 'gray'),
-    ('Black', 'black'),
-    ('Orange', 'orange'),
+    ('yellow', 'Yellow'),
+    ('red', 'Red'),
+    ('blue', 'Blue'),
+    ('green', 'Green'),
+    ('pink', 'Pink'),
+    ('gray', 'Gray'),
+    ('black', 'Black'),
+    ('orange', 'Orange'),
 )
 
 class Settings(models.Model):
@@ -23,6 +23,7 @@ class Settings(models.Model):
 class Account(AbstractUser):
     birthday = models.DateTimeField(null=True, blank=True)
     points = models.PositiveIntegerField(default=500)
+    image = models.ImageField(upload_to='profile_image', blank=True)
 
     settings = models.OneToOneField('accounts.Settings', on_delete=models.CASCADE)
 
