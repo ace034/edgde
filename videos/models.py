@@ -1,5 +1,4 @@
 from django.db import models
-from cloudinary.models import CloudinaryField
 
 from core.models import UUIDModel
 
@@ -23,7 +22,7 @@ VIDEO_RATINGS = (
 class Video(UUIDModel):
     title = models.CharField(max_length=128)
     views = models.PositiveIntegerField(default=0)
-    video = CloudinaryField('video')
+    video = models.FileField(upload_to='videos')
     description = models.CharField(max_length=1024)
     view_fee = models.PositiveIntegerField(default=1)
     rating = models.CharField(max_length=16, choices=VIDEO_RATINGS, default='PG-13')

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'cloudinary',
+    'progressbarupload',
     'core',
     'accounts',
     'videos',
@@ -77,6 +78,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'edgde.wsgi.application'
 
+# Files
+
+FILE_UPLOAD_HANDLERS = (
+    "progressbarupload.uploadhandler.ProgressBarUploadHandler",
+    "django.core.files.uploadhandler.MemoryFileUploadHandler",
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler",
+) 
+PROGRESSBARUPLOAD_INCLUDE_JQUERY = False
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases

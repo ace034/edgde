@@ -1,9 +1,9 @@
 from django.urls import path, include
 
-from .views import UploadView, VideoDirectUploadComplete
+from .views import UploadView, VideoView
 
-app_name = 'video'
+app_name = 'videos'
 urlpatterns = [
     path('upload', UploadView.as_view(), name='upload'),
-    path('upload/complete', VideoDirectUploadComplete.as_view(), name='complete'),
+    path('<str:pk>', VideoView.as_view(), name='view'),
 ]

@@ -24,4 +24,5 @@ urlpatterns = [
     path('videos/', include('videos.urls', namespace='videos')),
     path('boards/', include('boards.urls', namespace='boards')),
     path('transactions/', include('transactions.urls', namespace='transactions')),
+    path('progressbarupload/', include('progressbarupload.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

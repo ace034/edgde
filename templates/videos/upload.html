@@ -1,10 +1,17 @@
 {% extends 'layout2.html' %}
-{% load cloudinary %}
+{% load progress_bar %}
+
 {% block title %}Upload{% endblock %}
 
-{% block content %}
+{% block secret %}
+  {% progress_bar_media %}
+{% endblock %}
 
-  <form method="POST" action="{% url 'videos:complete' %}" enctype="multipart/form-data">
-    {{ direct.as_p }}
+{% block content %}
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% progress_bar %}
+    <button>Upload Your Video!</button>
   </form>
 {% endblock %}

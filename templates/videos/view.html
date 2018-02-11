@@ -1,0 +1,17 @@
+{% extends "layout2.html" %}
+
+{% block title %}{{model.title}}{% endblock%}
+
+{% block content %}
+    <h1>{{ model.title }}</h1>
+    <div id="views" style="padding-bottom: 2rem;">
+        {{ model.views }} views
+    </div>
+    <video width="800" height="400" controls>
+        <source src="/media/{{ model.video }}" type="video/{{ file_type }}">
+        Get a better browser. 
+    </video>
+    <div id="description" style="padding-bottom: 4rem;">
+        {{ model.description }}
+    </div>
+{% endblock %}
