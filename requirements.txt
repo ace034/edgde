@@ -1,6 +1,6 @@
 certifi==2018.1.18
 cloudinary==1.10.0
-Django==2.0.1
+Django==2.2.24
 django-extensions==1.9.9
 -e git+https://github.com/SeedyROM/django-progressbarupload@954323653df36835c990df2c4309f060a8e6cc85#egg=django_progressbarupload
 django-smalluuid==1.1.1
